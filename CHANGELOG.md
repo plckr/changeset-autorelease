@@ -1,5 +1,11 @@
 # changeset-autorelease
 
+## 0.3.0
+
+### Minor Changes
+
+- c4ef3e1: Fix release notes on release
+
 ## 0.2.0
 
 ### Minor Changes
