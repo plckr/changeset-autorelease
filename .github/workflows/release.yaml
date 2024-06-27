@@ -39,3 +39,15 @@ jobs:
           git add -A
           git commit -m "ci: version bump"
           git push
+
+      - name: Get version
+        id: get_version
+        run: echo ::set-output name=VERSION::$(node -p "require('./package.json').version")
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.get_version.outputs.VERSION }}
+          name: Release ${{ steps.get_version.outputs.VERSION }}
+          body: |
+            TODO CHANGELOG
