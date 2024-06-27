@@ -47,9 +47,14 @@ jobs:
       - name: Get release notes
         id: release_notes
         run: |
-          echo ::set-output name=RELEASE_NOTES::$(\
-            awk '/^## /{if (p) exit; p=1} p' CHANGELOG.md \
-          )
+          RELEASE_NOTES=$(awk '/^## /{if (p) exit; p=1} p' CHANGELOG.md)
+
+          # string substitutions
+          RELEASE_NOTES="${RELEASE_NOTES//'%'/'%25'}"
+          RELEASE_NOTES="${RELEASE_NOTES//$'\n'/'%0A'}"
+          RELEASE_NOTES="${RELEASE_NOTES//$'\r'/'%0D'}"
+
+          echo ::set-output name=RELEASE_NOTES::$RELEASE_NOTES
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
