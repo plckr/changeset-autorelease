@@ -28,6 +28,8 @@ jobs:
         run: npx changeset status --since=main
 
       - name: Create and commit version bump
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npx changeset version
           git config --global user.name "github-actions[bot]"
