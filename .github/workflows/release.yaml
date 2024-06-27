@@ -44,10 +44,16 @@ jobs:
         id: get_version
         run: echo ::set-output name=VERSION::$(node -p "require('./package.json').version")
 
+      - name: Get release notes
+        id: release_notes
+        run: |
+          echo ::set-output name=RELEASE_NOTES::$(\
+            awk '/^## /{if (p) exit; p=1} p' CHANGELOG.md \
+          )
+
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v${{ steps.get_version.outputs.VERSION }}
           name: Release ${{ steps.get_version.outputs.VERSION }}
-          body: |
-            TODO CHANGELOG
+          body: ${{ steps.release_notes.outputs.RELEASE_NOTES }}
