@@ -1,5 +1,11 @@
 # changeset-autorelease
 
+## 0.3.1
+
+### Patch Changes
+
+- 6a4427f: Remove version title from release notes body
+
 ## 0.3.0
 
 ### Minor Changes
