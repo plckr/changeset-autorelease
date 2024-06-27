@@ -1,5 +1,11 @@
 # changeset-autorelease
 
+## 0.2.0
+
+### Minor Changes
+
+- 380aa5d: include release notes
+
 ## 0.1.1
 
 ### Patch Changes
