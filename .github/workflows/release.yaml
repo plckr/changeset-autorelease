@@ -47,7 +47,7 @@ jobs:
       - name: Get release notes
         id: release_notes
         run: |
-          RELEASE_NOTES=$(awk '/^## /{if (p) exit; p=1} p' CHANGELOG.md)
+          RELEASE_NOTES=$(awk '/^## /{if (p) {exit} else {p=1; next}} p' CHANGELOG.md)
 
           # string substitutions
           RELEASE_NOTES="${RELEASE_NOTES//'%'/'%25'}"
