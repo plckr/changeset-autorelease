@@ -1,5 +1,8 @@
 # changeset-autorelease
 
+![Flow](./flow-dark.png#gh-dark-mode-only)
+![Flow](./flow-light.png#gh-light-mode-only)
+
 [Workflow file](.github/workflows/release.yaml)
 
 This repository is a proof of concept how changeset can work on private repos, allowing automatic versioning when pushed to main branch.
